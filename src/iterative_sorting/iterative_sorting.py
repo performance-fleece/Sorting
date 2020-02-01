@@ -1,7 +1,5 @@
 # TO-DO: Complete the selection_sort() function below
 
-testarr = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
-
 
 def selection_sort(arr):
     # loop through n-1 elements
@@ -21,8 +19,6 @@ def selection_sort(arr):
     return arr
 
 
-print(selection_sort(testarr))
-
 # TO-DO:  implement the Bubble Sort function below
 
 
@@ -34,15 +30,21 @@ def bubble_sort(arr):
         for i in range(remaining_passes):
             if arr[i+1] < arr[i]:
                 swap_occurred = True
-                arr[i], arr[i+1] = arr[i+1], arr[i]
+                arr[i+1], arr[i] = arr[i], arr[i+1]
         remaining_passes = remaining_passes - 1
     return arr
 
 
-print(bubble_sort(testarr))
 # STRETCH: implement the Count Sort function below
 
 
 def count_sort(arr, maximum=-1):
+
+    for i in range(len(arr)):
+        low_value_idx = i
+        for test_idx in arr[i+1::]:
+            if arr[test_idx] < arr[low_value_idx]:
+                low_value_idx = test_idx
+        arr[i], arr[low_value_idx] = arr[low_value_idx], arr[i]
 
     return arr
