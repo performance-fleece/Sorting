@@ -27,15 +27,24 @@ print(selection_sort(testarr))
 
 
 def bubble_sort(arr):
+    # set swap to true at start to ensure while statement runs
     swap_occurred = True
-    remaining_passes = len(arr) - 1
-    while remaining_passes > 0 and swap_occurred:
+    # amount of passes needed to run through all possible iterations
+    possible_passes = len(arr) - 1
+    # possible passes remaining and a swap occurred
+    while possible_passes > 0 and swap_occurred:
+        # reset swap to false before for loop runs
         swap_occurred = False
-        for i in range(remaining_passes):
+        # run for loop for each possible pass
+        for i in range(possible_passes):
+            # if RHS is less than LHS then swap and set swapped to true
+            # if swapped is true then while statement continues
             if arr[i+1] < arr[i]:
-                swap_occurred = True
                 arr[i], arr[i+1] = arr[i+1], arr[i]
-        remaining_passes = remaining_passes - 1
+                swap_occurred = True
+        # shorten possible passes by 1 as index increases
+        possible_passes = possible_passes - 1
+    # if no passes possible OR a swap did not occur(meaning order correct) return array
     return arr
 
 
